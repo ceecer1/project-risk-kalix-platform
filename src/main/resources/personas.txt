@@ -1,0 +1,16 @@
+Title: Project Risk Tracking Platform Sequence Diagram
+
+User Persona: Project Manager
+User Persona: Team Member
+User Persona: Administrator
+
+User Persona: Project Manager -> Project Creation -> Project Manager
+User Persona: Team Member -> Risk Identification -> Team Member
+User Persona: Team Member -> Risk Assessment -> Team Member
+User Persona: Team Member -> Risk Mitigation -> Team Member
+User Persona: Team Member -> Risk Review -> Team Member
+User Persona: Administrator -> Risk Category Management -> Administrator
+User Persona: Administrator -> Risk Template Management -> Administrator
+
+Legend:
+- -> : Message

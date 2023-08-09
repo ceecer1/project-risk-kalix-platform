@@ -1,0 +1,147 @@
+User
+-----
+userId: Long (PK)
+username: String
+email: String
+
+Project
+-------
+projectId: Long (PK)
+name: String
+description: String
+
+RiskCategory
+------------
+categoryId: Long (PK)
+name: String
+description: String
+
+Risk
+----
+riskId: Long (PK)
+projectId: Long (FK)
+categoryId: Long (FK)
+title: String
+description: String
+status: RiskStatusEnum
+probability: Int
+impact: Int
+createdAt: LocalDateTime
+updatedAt: LocalDateTime
+
+MitigationTask
+--------------
+taskId: Long (PK)
+riskId: Long (FK)
+description: String
+status: MitigationTaskStatusEnum
+dueDate: LocalDateTime
+createdAt: LocalDateTime
+
+ContingencyTask
+---------------
+taskId: Long (PK)
+riskId: Long (FK)
+description: String
+status: ContingencyTaskStatusEnum
+dueDate: LocalDateTime
+createdAt: LocalDateTime
+
+RiskLog
+-------
+logId: Long (PK)
+riskId: Long (FK)
+logType: RiskLogTypeEnum
+logDate: LocalDateTime
+logDetails: String
+
+Notification
+------------
+notificationId: Long (PK)
+userId: Long (FK)
+message: String
+createdAt: LocalDateTime
+
+Comment
+-------
+commentId: Long (PK)
+userId: Long (FK)
+entityId: Long (FK) (e.g., Risk ID, Project ID)
+comment: String
+createdAt: LocalDateTime
+
+Attachment
+----------
+attachmentId: Long (PK)
+entityId: Long (FK) (e.g., Risk ID, Project ID)
+filename: String
+contentType: String
+fileSize: Long
+createdAt: LocalDateTime
+
+RiskHistory
+-----------
+historyId: Long (PK)
+riskId: Long (FK)
+previousStatus: RiskStatusEnum
+newStatus: RiskStatusEnum
+updatedAt: LocalDateTime
+
+RiskAssessment
+--------------
+assessmentId: Long (PK)
+riskId: Long (FK)
+assessorId: Long (FK)
+probabilityScore: Int
+impactScore: Int
+riskLevel: RiskLevelEnum
+assessmentDate: LocalDate
+
+RiskTemplate
+------------
+templateId: Long (PK)
+title: String
+description: String
+defaultProbability: Int
+defaultImpact: Int
+createdAt: LocalDateTime
+updatedAt: LocalDateTime
+
+ProjectTeam
+-----------
+teamId: Long (PK)
+projectId: Long (FK)
+userId: Long (FK)
+role: UserRoleEnum
+createdAt: LocalDateTime
+updatedAt: LocalDateTime
+
+RiskAssignment
+--------------
+assignmentId: Long (PK)
+riskId: Long (FK)
+assigneeId: Long (FK)
+assignedByUserId: Long (FK)
+assignmentDate: LocalDateTime
+dueDate: LocalDateTime
+status: TaskAssignmentStatusEnum
+createdAt: LocalDateTime
+
+RiskReview
+----------
+reviewId: Long (PK)
+riskId: Long (FK)
+reviewerId: Long (FK)
+reviewDate: LocalDateTime
+reviewDetails: String
+createdAt: LocalDateTime
+
+AuditTrail
+----------
+trailId: Long (PK)
+entityType: String (e.g., "Risk", "Project")
+entityId: Long (FK)
+action: String (e.g., "Created", "Updated")
+actorId: Long (FK)
+actionDate: LocalDateTime
+details: String
